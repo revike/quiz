@@ -1,0 +1,22 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="">Quiz</h1>
+        <p>
+            Предлагаем вам пройти тестирование и ответить на вопросы из области
+            программирования :)
+        </p>
+        <div class="text-center row">
+            <hr>
+            <div>
+                <a class="btn-success btn"
+                   href="{% url 'main_app:question' pk=random_quest.id %}">
+                    Начать
+                </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

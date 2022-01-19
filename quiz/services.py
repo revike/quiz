@@ -8,4 +8,4 @@ class QuizResultService():
         self.answers_dto = answers_dto
 
     def get_result(self) -> float:
-        # your code here
+        """your code here"""
