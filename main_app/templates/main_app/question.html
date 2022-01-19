@@ -1,0 +1,22 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>{{ object }}</h1>
+        <form action="{% url 'main_app:question' pk=object.pk %}"
+              method="post">
+            {% csrf_token %}
+            {% for choice in choices %}
+                <div>
+                    <label class="">
+                        <input type="checkbox" name="{{ choice.id }}"
+                               value="{{ choice.text }}"> {{ choice.text }}
+                    </label>
+                </div>
+                <div></div>
+            {% endfor %}
+            <button>Далее</button>
+        </form>
+    </div>
+{% endblock %}
