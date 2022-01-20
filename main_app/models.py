@@ -1,6 +1,18 @@
 from django.db import models
 
 
+class Quiz(models.Model):
+    """Модель опроса"""
+    class Meta:
+        verbose_name_plural = 'опросы'
+        verbose_name = 'опросы'
+
+    title = models.CharField(max_length=128, verbose_name='опрос')
+
+    def __str__(self):
+        return f'{self.title}'
+
+
 class Question(models.Model):
     """Модель вопросов"""
 
@@ -12,6 +24,8 @@ class Question(models.Model):
         (1, 'Один правильный вариант ответа'),
         (2, 'Два правильных варианта ответа'),
     )
+    quiz = models.ForeignKey(to=Quiz, on_delete=models.CASCADE, null=False,
+                             verbose_name='опрос')
     text = models.CharField(max_length=512, unique=True,
                             verbose_name='текст вопроса')
     right_choices = models.SmallIntegerField(

@@ -23,6 +23,9 @@ class AnswerDTO(NamedTuple):
     question_uuid: str
     choices: List[str]
 
+    def get_quest_id(self):
+        return self.question_uuid
+
 
 class AnswersDTO(NamedTuple):
     quiz_uuid: str

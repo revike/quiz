@@ -8,4 +8,9 @@ class QuizResultService():
         self.answers_dto = answers_dto
 
     def get_result(self) -> float:
-        """your code here"""
+        if self.quiz_dto.uuid == self.answers_dto.quiz_uuid:
+            quantity_list = self.quiz_dto.questions
+            answers_list = self.answers_dto.answers
+            for question in self.quiz_dto.questions:
+                ...
+        return 0
