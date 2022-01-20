@@ -30,7 +30,9 @@ class Command(BaseCommand):
             quiz = question['quiz']
             _quiz = Quiz.objects.get(title=quiz)
             question['quiz'] = _quiz
-            Quiz.objects.create(**question)
+            print('*' * 10)
+            print(question)
+            Question.objects.create(**question)
 
         choices = load_json_data('choices')
         Choice.objects.all().delete()
@@ -38,7 +40,8 @@ class Command(BaseCommand):
             question = choice['question']
             _question = Question.objects.get(text=question)
             choice['question'] = _question
-            Choice.objects.create(**question)
+            Choice.objects.create(**choice)
 
+        User.objects.filter(is_staff=True, is_superuser=True).delete()
         User.objects.create_superuser(
             'admin', 'admin@admin.local', 'admin')
