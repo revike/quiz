@@ -187,10 +187,28 @@ class ResultView(TemplateView):
     template_name = 'main_app/result.html'
 
     def get_context_data(self, **kwargs):
-        result = self.request.session['result']
-        # print(self.request.session['answers'])
+        choices_dict = {1: 'A', 2: 'B', 3: 'C', 4: 'D'}
+        choices = {}
+        abc = []
+        result = int(self.request.session['result'] * 100)
+        answers = self.request.session['answers']
+        quiz_name = Quiz.objects.get(id=answers[0])
+        k = 1
+        for answer in answers[1]:
+            i = 1
+            for choice in answer[1]:
+                if choice is None:
+                    pass
+                else:
+                    abc.append(choices_dict[i])
+                i += 1
+            choices[k] = abc
+            abc = []
+            k += 1
         context = super().get_context_data(**kwargs)
-        context['result'] = float(result * 100)
+        context['choices'] = choices
+        context['quiz_name'] = quiz_name
+        context['result'] = result
         context['title'] = 'результат'
         return context
 

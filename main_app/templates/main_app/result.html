@@ -2,18 +2,23 @@
 {% load static %}
 
 {% block content %}
-    <div class="text-center">
-        <h1 class="">Quiz</h1>
-        <p>
+    <div class="">
+        <h1 class="text-center">Quiz</h1>
+        <p class="text-center">
             Результат: {{ result }}%
         </p>
-        <div class="text-center row">
+        <div class="row">
             <hr>
-            <div>
-                <div class="row">
-                    <div class="col-8"></div>
-                    <div class="col-4"></div>
-                </div>
+            <div class="col-6">
+            </div>
+            <div class="col-6">
+                {% for quest, choice in choices.items %}
+                    <div>{{ quest }} -
+                        {% for c in choice %}
+                            {{ c }}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
