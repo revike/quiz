@@ -1,22 +1,49 @@
 {% extends 'main_app/base.html' %}
 {% load static %}
 
+
 {% block content %}
     <div class="text-center">
+    {% if choices != 0 %}
         <h1>{{ object }}</h1>
         <form action="{% url 'main_app:question' pk=object.pk %}"
               method="post">
             {% csrf_token %}
-            {% for choice in choices %}
+        <script type="text/javascript">
+
+        function checker() {
+
+            if ($('input:checkbox').filter(':checked').length === 0) {
+
+                alert('Нужно выбрать хотя бы 1 вариант ответа!');
+
+                return false;
+
+            } else {
+                return true
+            }
+
+        }
+    </script>
+            {% for val, choice in choices.items %}
                 <div>
                     <label class="">
-                        <input type="checkbox" name="{{ choice.id }}"
-                               value="{{ choice.text }}"> {{ choice.text }}
+                        <input type="checkbox" name="{{ val }}"
+                               value="{{ choice.text }}"> {{ val }}. {{ choice.text }}
                     </label>
                 </div>
                 <div></div>
             {% endfor %}
-            <button>Далее</button>
+            {% if finish == 1 %}
+                <button type="submit" onclick="return checker()">Далее</button>
+            {% elif finish == 0 %}
+                <button type="submit" onclick="return checker()">Завершить тест</button>
+            {% endif %}
         </form>
+        {% else %}
+        <p>Что-то пошло не так! Не возвращайтесь назад кнопками браузера!</p>
+        <hr>
+        <a href="{% url 'main_app:index' %}">Отменить опрос!</a>
+    {% endif %}
     </div>
 {% endblock %}

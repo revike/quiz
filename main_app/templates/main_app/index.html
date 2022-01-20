@@ -11,10 +11,20 @@
         <div class="text-center row">
             <hr>
             <div>
-                <a class="btn-success btn"
-                   href="{% url 'main_app:question' pk=random_quest.id %}">
-                    Начать
-                </a>
+                {% for quiz in object_list %}
+                    <div class="row">
+                        <div class="col-8">
+                            <p>{{ quiz }}
+                            </p></div>
+                        <div class="col-4">
+                            <a class="btn btn-success" href="{% url 'main_app:start' pk=quiz.id %}">
+                                Перейти к опросу
+                            </a>
+                        </div>
+
+                    </div>
+                    <hr>
+                {% endfor %}
             </div>
         </div>
     </div>

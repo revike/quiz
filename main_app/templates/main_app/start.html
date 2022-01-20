@@ -1,0 +1,26 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="text-center">
+    <h1 class="">Quiz</h1>
+    <p>
+    <h4>{{ object.title }}</h4>
+    </p>
+    <div class="text-center row">
+        <div>
+            <div class="row">
+                <div class="">
+                    <a class="btn-success btn"
+                       href="{% url 'main_app:question' pk=random_quest.id %}">
+                        Начать
+                    </a>
+                </div>
+                <br><br>
+                <hr>
+                <a href="{% url 'main_app:index' %}">Отмена</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="">Quiz</h1>
+        <p>
+            Данный опрос еще не готов! Обратитесь к администратору!
+        </p>
+        <div class="text-center row">
+            <hr>
+            <div>
+                <div class="row">
+                    <div class="col-8"></div>
+                    <a href="{% url 'main_app:index' %}">На главную</a>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

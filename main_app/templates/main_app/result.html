@@ -1,0 +1,26 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="">
+        <h1 class="text-center">Quiz</h1>
+        <p class="text-center">
+            Результат: {{ result }}%
+        </p>
+        <div class="row">
+            <hr>
+            <div class="col-6">
+            </div>
+            <div class="col-6">
+                {% for quest, choice in choices.items %}
+                    <div>{{ quest }} -
+                        {% for c in choice %}
+                            {{ c }}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
