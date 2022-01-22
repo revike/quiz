@@ -96,6 +96,13 @@ docker-compose exec web pycodestyle .
 
 ### Комментарии по выполнению ТЗ
 
+Запуск с помощью Docker
+=======================
+
+~~~
+docker-compose up -d
+~~~
+
 Установка
 =========
 
